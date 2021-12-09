@@ -13,13 +13,13 @@
     []Import Search Component
     []Import Favorite Component
 
-[]Search component
-    []Tie route to Favorite component on a button.
-    []Input field for search
-    []setState for search string value
-    []addSearch function to make a 'GET' dispatch call to be intercepted by a saga <--->
-    []reduxStore variable for the gifs to be displayed
-    []Map through gif store. Append 1 SearchItem per map
+[x]Search component
+    [x]Tie route to Favorite component on a button.
+    [x]Input field for search
+    [x]setState for search string value
+    [x]addSearch function to make a 'POST' dispatch call to be intercepted by a saga <--->
+    [x]reduxStore variable for the gifs to be displayed
+    [x]Map through gif store. Append 1 SearchItem per map
 
 []SearchItem component
     []Tie favorite button to unique item.

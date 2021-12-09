@@ -1,6 +1,7 @@
 import SearchItem from '../SearchItem/SearchItem.jsx';
 import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 
 
@@ -8,6 +9,7 @@ function Search(){
     const dispatch = useDispatch();
     const [search, setSearch] = useState('');
     const searchReducer = useSelector(store => store.searchReducer);
+    const history = useHistory();
 
 
     const handleSubmit = ()=>{
@@ -18,6 +20,10 @@ function Search(){
         })
         setSearch('');
     };
+
+    const switchToFavorite = ()=>{
+        history.push('/favorites')
+    }
 
     console.log(searchReducer);
 
@@ -34,7 +40,7 @@ function Search(){
             })}
             {/* <img src={searchReducer[0].images.original.url} /> */}
             
-            <button>Go to Favorites</button>
+            <button onClick={switchToFavorite}>Go to Favorites</button>
         </div>
     );
 };
