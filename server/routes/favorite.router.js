@@ -2,6 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 
 const router = express.Router();
+const myApiKey = process.env.API_KEY;
 
 // return all favorite images
 router.get('/', (req, res) => {
