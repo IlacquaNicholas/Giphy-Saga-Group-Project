@@ -1,0 +1,18 @@
+.searchDiv   {
+    text-align: center;
+}
+
+input   {
+    margin-bottom: 50px;
+}
+
+
+.gif    {
+    display: inline-block;
+    height: 200px;
+    width: 200px;
+    background-color: blue;
+    margin: 10px;
+    border: none;
+    color: white;
+}

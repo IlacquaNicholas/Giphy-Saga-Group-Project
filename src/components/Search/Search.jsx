@@ -2,8 +2,12 @@ import SearchItem from '../SearchItem/SearchItem.jsx';
 
 function Search(){
     return(
-        <div>
-
+        <div className="searchDiv">
+            <input></input>
+            <br />
+            <div className="gif">
+                GIF
+            </div>
         </div>
     );
 };
