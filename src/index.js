@@ -11,8 +11,31 @@ import createSagaMiddleware from 'redux-saga';
 import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
+const searchReducer = (state = [], action)=>{
+    switch (action.type) {
+        case 'SET_SEARCH':
+            return action.payload;
+        default:
+            return state;
+}
+};
 
-
+function* getSearch(action){
+    try{
+        console.log('getSearch action.payload:', action.payload);
+        const response = yield axios({
+            method: 'POST',
+            url: '/api/search',
+            data: {search: action.payload}
+        })
+        yield put({
+            type: 'SET_SEARCH',
+            payload: response.data.data
+        })
+    }catch(err){
+        console.error(err);
+    };
+};
 
 
 
@@ -21,13 +44,15 @@ import axios from 'axios';
 const sagaMiddleware = createSagaMiddleware();
 
 function* rootSaga() {
-    //listeners go here
+    //saga listeners go here.
+    yield takeEvery('GET_SEARCH', getSearch);
 };
 
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         //reducers go here
+        searchReducer
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

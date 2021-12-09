@@ -6,7 +6,7 @@
         [x]FavoriteItem
         [x]Search
         [x]SearchItem
-    []Basic CSS
+    [x]Basic CSS
 
 []App Component
     []Wrap Search and Favorite components in their own routes.
