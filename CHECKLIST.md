@@ -9,9 +9,9 @@
     [x]Basic CSS
 
 []App Component
-    []Wrap Search and Favorite components in their own routes.
-    []Import Search Component
-    []Import Favorite Component
+    [x]Wrap Search and Favorite components in their own routes.
+    [x]Import Search Component
+    [x]Import Favorite Component
 
 [x]Search component
     [x]Tie route to Favorite component on a button.

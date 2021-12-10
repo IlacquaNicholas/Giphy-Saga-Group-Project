@@ -70,7 +70,7 @@ function* addFavorite(action) {
             data: action.payload //Write post and get route on server.
         })
         yield put({
-            getFavorites();
+            type: 'GET_FAVORITES',
         })
     } catch (err) {
         console.error(err);
@@ -87,7 +87,8 @@ const sagaMiddleware = createSagaMiddleware();
 function* rootSaga() {
     //saga listeners go here.
     yield takeEvery('GET_SEARCH', getSearch);
-    yield takeEvery('ADD_TO_FAVORITES', addFavorite);
+    yield takeEvery('ADD_TO_FAVORITES', addFavorite)
+    yield takeEvery('GET_FAVORITES', getFavorites);
 };
 
 // Create one store that all components can use
