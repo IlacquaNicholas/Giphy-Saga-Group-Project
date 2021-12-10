@@ -61,6 +61,22 @@ function* getFavorites(action) {
     };
 };
 
+function* getFavoritesByCategory(action){
+    try{
+        console.log('getFavoritesByCategory action.payload:', action.payload);
+        const response = yield axios({
+            method: 'GET',
+            url: `/api/favorite/${action.payload}`
+        })
+        yield put({
+            type: 'SET_FAVORITES',
+            payload: response.data
+        });
+    }catch (err) {
+        console.log('getFavoritesByCategory error:', err);
+    };
+};
+
 function* addFavorite(action) {
     try {
         console.log('addFavorite action.payload:', action.payload);
@@ -77,6 +93,20 @@ function* addFavorite(action) {
     };
 };
 
+function* deleteFavorite(action){
+    try{
+        console.log('deleteFavorite action.payload:', action.payload);
+        const response = yield axios({
+            method: 'DELETE',
+            url: `/api/favorite/${action.payload}`
+        })
+        yield put({
+            type: 'GET_FAVORITES',
+        })
+    }catch(err) {
+        console.error('deleteFavorite error:', err);
+    };
+};
 
 
 
@@ -89,6 +119,8 @@ function* rootSaga() {
     yield takeEvery('GET_SEARCH', getSearch);
     yield takeEvery('ADD_TO_FAVORITES', addFavorite)
     yield takeEvery('GET_FAVORITES', getFavorites);
+    yield takeEvery('GET_FAVORITES_BY_CATEGORY', getFavoritesByCategory);
+    yield takeEvery('DELETE_FAVORITE', deleteFavorite)
 };
 
 // Create one store that all components can use

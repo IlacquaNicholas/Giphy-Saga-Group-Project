@@ -1,16 +1,21 @@
 import React from 'react';
-
-const removeFavorite = () => {
-    dispatch({
-
-    });
-};
+import {useDispatch} from 'react-redux';
 
 function FavoriteItem({favoriteItem}){
+    const dispatch = useDispatch();
+
+    const removeFavorite = () => {
+        dispatch({
+            type: 'DELETE_FAVORITE',
+            payload: favoriteItem.id
+        });
+    };
+
+
     return(
         <div>
             <img src={favoriteItem.url} />
-            <button onClick={removeFavorite}>Delete from Favorites</button>
+            <button onClick={removeFavorite}>Unfavorite</button>
         </div>
     );
 };

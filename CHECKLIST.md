@@ -21,21 +21,21 @@
     [x]reduxStore variable for the gifs to be displayed
     [x]Map through gif store. Append 1 SearchItem per map
 
-[]SearchItem component
-    []Tie favorite button to unique item.
-    []Favorite button tied to 'POST' dispatch to be intercepted by a saga <--->
-        []Research prefilled input fields
-        []FORCE user to select one of the favorite fields
+[x]SearchItem component
+    [x]Tie favorite button to unique item.
+    [x]Favorite button tied to 'POST' dispatch to be intercepted by a saga <--->
+        [x]Research prefilled input fields
+        [x]FORCE user to select one of the favorite fields
 
 
 []Favorite component
-    []Tie route to Favorite component on a button.
-    []useEffect
-        []Function that dispatches to be intercepted by a saga <----> SELECT *?
-    []reduxStore variable for the favorited gifs to be displayed
-    []Map through the gif favorites store. Append 1 FavoriteItem per map.
+    [x]Tie route to Favorite component on a button.
+    [x]useEffect
+        [x]Function that dispatches to be intercepted by a saga <----> SELECT *?
+    [x]reduxStore variable for the favorited gifs to be displayed
+    [x]Map through the gif favorites store. Append 1 FavoriteItem per map.
     []Create buttons for each "favorite category"
         []Use string literal to change `GET /api/${category}` route tied to each button.
 
-[]FavoriteItem component
-    []Render item.
+[x]FavoriteItem component
+    [x]Render item.

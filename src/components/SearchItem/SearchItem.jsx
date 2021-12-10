@@ -38,7 +38,7 @@ function SearchItem({search}){
                             <option value="nsfw">NSFW</option>
                             <option value="meme">Meme</option>
                         </select>
-                        <button>{button ? 'Favorite' : 'Added'}</button>
+                        <button>{button ? 'Added' : 'Favorite'}</button>
                     </form>
             
         </div>

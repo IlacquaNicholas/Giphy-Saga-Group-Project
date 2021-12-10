@@ -38,19 +38,33 @@ router.post('/', (req, res) => {
 });
 
 //select by favorite category
-router.get('/:favCategory', (req, res) => {
-  const favCategory = req.params
-  console.log('req.params:', req.params);
-  const queryText = `
-  SELECT * FROM "favorites"
-  WHERE "category"=${favCategory}
-  `;
- pool.query(queryText)
-   .then((dbRes) => {
-    res.send(dbRes.rows);
-}).catch((err) => {
-  console.log('Error in favorites category GET', err);
+router.get('/:id', (req, res) => {
+  const favCategory = req.params.id
+  console.log('req.params:', req.params.id);
+  if(favCategory == 'all'){
+    //Initialize query text outside of the if statements next time?
+    const queryText = ` 
+      SELECT *
+      FROM "favorites";`
+    pool.query(queryText)
+    .then((dbRes) => {
+     res.send(dbRes.rows);
+    }).catch((err) => {
+     console.log('Error in favorites category GET', err);
+    });
+  }else{
+    const queryText = `
+      SELECT * 
+      FROM "favorites"
+      WHERE category='${favCategory}';
+        `
+  pool.query(queryText)
+  .then((dbRes) => {
+   res.send(dbRes.rows);
+  }).catch((err) => {
+   console.log('Error in favorites category GET', err);
   });
+  };
 });
 
 // update given favorite with a category id
@@ -60,8 +74,19 @@ router.put('/:favId', (req, res) => {
 });
 
 // delete a favorite
-router.delete('/', (req, res) => {
-  res.sendStatus(200);
+router.delete('/:id', (req, res) => {
+  const favToDelete = req.params.id;
+  console.log('req.params.id:', req.params.id);
+  const queryText = `
+  DELETE FROM "favorites"
+  WHERE id='${favToDelete}'`
+  pool.query(queryText)
+  .then((dbRes) =>{
+    res.sendStatus(200);
+  }).catch((dbErr) =>{
+    res.sendStatus(500);
+    console.log('favorites delete dbErr:', dbErr);
+  });
 });
 
 module.exports = router;
